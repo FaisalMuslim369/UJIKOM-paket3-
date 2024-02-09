@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'OMORI_GAME';
+    src: url('OMORI_GAME.woff2') format('woff2'),
+        url('OMORI_GAME.woff') format('woff'),
+        url('OMORI_GAME.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
