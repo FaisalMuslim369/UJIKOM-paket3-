@@ -1,27 +1,50 @@
-import { useContext } from "react"
-import Sidebar from "../components/Sidebar"
-import DataContext from "../variabels/Context"
-import Navbar from "../components/Navbar";
-import { Container } from "../components/Grid";
+import { Link } from "react-router-dom";
+import ConfigAxios from "../variabels/ConfigAxios";
+import { useContext } from "react";
+import DataContext from "../variabels/Context";
+import Topbar from "../components/Topbar";
+import React from "react";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import Measure from "react-measure";
 
-export default function Utama () {
-    const {user,setUser,userFunction} = useContext(DataContext);
-
-    return <Navbar>
-        <Container>
-            <h1>Hai {user.nama} <button className="btn btn-danger" onClick={() => userFunction.remove(setUser)} >logout</button> </h1>
-        </Container>
-        <div className="bg-loginBackground h-screen bg-cover bg-no-repeat">
-        <div className="flex justify-center items-center h-screen">
-          <div className="bg-white h-72 w-96 border border-8 border-black flex justify-center items-center rounded-md"></div>
-          <div className="flex justify-center items-center h-screen">
-            <div className="bg-white h-72 w-96 border border-8 border-black flex justify-center items-center rounded-md">
-  
-            </div>
+export default function Utama() {
+  const items = Array.from({ length: 100 }).map((_, index) => (
+    <div className="p-2 space-x-4 space-y-4">
+      <Measure
+        key={index}
+        bounds
+        onResize={contentRect => {
+          // Update the item's height based on contentRect.bounds.height
+        }}
+      >
+        {({ measureRef }) => (
+          <div className="bg-zinc-300 items-center justify-center text-center">
+            <Link to={`/gambar/${index + 1}`}> {/* Menambahkan Link di sini */}
+              <img
+                ref={measureRef}
+                src={`https://picsum.photos/200/${Math.floor(
+                  Math.random() * (300 - 200 + 1) + 200
+                )}`}
+                style={{ width: "100%" }}
+                className="pt-5 pl-5 pr-5"
+              />
+            </Link>
+            <p className="py-5">Judul Gambar {index + 1}</p>
           </div>
-          <div></div>
-        </div>
+        )}
+      </Measure>
+    </div>
+  ));
+  return (
+    <div className=" bg-loginBackground2 h-auto bg-cover bg-no-repeat bg-fixed items-center justify-center flex-col font-poppins pt-24">
+      <Topbar />
+      <div className="App" style={{ padding: "0 60px" }}>
+        <Masonry
+          columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }} 
+        >
+          {items}
+        </Masonry>
       </div>
-    </Navbar>
-    
+    </div>
+  );
 }

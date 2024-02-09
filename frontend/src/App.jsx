@@ -9,8 +9,6 @@ import DataContext from "./variabels/Context.js"
 import Middleware from "./components/Midleware.jsx"
 import UserFunction from "./functions/UserFuntion.js";
 import Utama from "./pages/Utama.jsx";
-import LoginCoba from "./pages/logincoba.jsx";
-import RegisCoba from "./pages/regiscoba.jsx";
 import UtamaCoba from "./pages/utamaCoba.jsx";
 import CobaMasonry from "./pages/cobaMasonry.jsx";
 
@@ -40,8 +38,6 @@ export default function App () {
         <Route path="/" element={<Login/>} />
         <Route path="/register" element={<Register />} />  
         <Route path="*" element={<Login />} />
-        <Route path="/logincoba" element={<LoginCoba />} />
-        <Route path="/regiscoba" element={<RegisCoba />} />
         <Route path="/utamacoba" element={<UtamaCoba />} />
         <Route path="/cobamasonry" element={<CobaMasonry />} />
       </Middleware>

@@ -3,34 +3,73 @@ import ConfigAxios from "../variabels/ConfigAxios";
 import { useContext } from "react";
 import DataContext from "../variabels/Context";
 
-export default function Register () {
-    const {checkMsg} = useContext(DataContext);
-    const nav = useNavigate();
+export default function Register() {
+  const { checkMsg } = useContext(DataContext);
+  const nav = useNavigate();
 
-    async function sendData (e) {
-        e.preventDefault();
-        const response = await ConfigAxios.post("/api/user",new FormData(e.target));
-        if(checkMsg(response)){
-            nav("/");
-        }
+  async function sendData(e) {
+    e.preventDefault();
+    const response = await ConfigAxios.post(
+      "/api/user",
+      new FormData(e.target)
+    );
+    if (checkMsg(response)) {
+      nav("/");
     }
+  }
 
-    return <div className="flex justify-center">
-        <div className="mt-5 w-1/2">
-            <form onSubmit={sendData} className="border p-3 rounded shadow-lg">
-                <h2 className="text-center" >Register</h2>
-                <div className="mb-3">
-                    <input type="text" required={true} name="nama" className="w-full px-3 py-2 border rounded-md" />
-                </div>
-                <div className="mb-3">
-                    <input type="email" required={true} name="email" className="w-full px-3 py-2 border rounded-md" />
-                </div>
-                <div className="mb-3">
-                    <input type="password" required={true} name="password" className="w-full px-3 py-2 border rounded-md" />
-                </div>
-                <button className="text-center btn btn-primary mt-2 shadow-lg w-full" >Buat</button>
-                <h6 className="text-center d-block mt-3 text-sm" >Sudah punya akun bisa langsung <Link to={"/"} >masuk</Link></h6>
-            </form>
-        </div>
+  return (
+    <div className="flex bg-loginBackground h-screen bg-cover bg-no-repeat items-center justify-center ">
+      <div className="bg-white h-96 w-96 border border-8 border-black flex justify-center items-center rounded-md relative flex-col">
+        <form
+          onSubmit={sendData}
+          className="h-max absolute flex flex-col gap-4 -top-10"
+        >
+          <div className="flex flex-col border-8 border-black rounded-lg overflow-hidden bg-white">
+            <div className="border-b-8 p-4 border-black w-full ">
+              <h1 className="bg-black text-white w-full h-10 text-center pt-2 text-md">
+                sign up
+              </h1>
+            </div>
+            <div className=" p-4 border-black w-full flex flex-col gap-3">
+              <input
+                type="text"
+                required={true}
+                name="nama"
+                placeholder="Enter your name"
+                className="w-full px-3 py-2 rounded border-4 border-black"
+              />
+
+              <input
+                type="email"
+                required={true}
+                name="email"
+                placeholder="Enter your email"
+                className="w-full px-3 py-2 rounded border-4 border-black"
+              />
+
+              <input
+                type="password"
+                required={true}
+                name="password"
+                placeholder="Enter your password"
+                className="w-full px-3 py-2 rounded border-4 border-black"
+              />
+            </div>
+          </div>
+          <div className="flex justify-between gap-3">
+            <Link
+              to="/"
+              className="rounded-xl border-2 border-black border bg-red-500 text-white px-4 py-3 w-1/2 text-center"
+            >
+              Have account
+            </Link>
+            <button className="rounded-xl border-2 border-black bg-sky-500 border text-white px-4 py-3 w-1/2 btn btn-primary">
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+  );
 }
