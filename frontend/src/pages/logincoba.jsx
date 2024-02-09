@@ -49,7 +49,7 @@ export default function LoginCoba() {
             </div>
           </div>
           <div className="flex justify-between gap-3">
-            <Link to={"/regisCoba"}className="rounded-xl border-2 border-black bg-red-500 text-white px-4 py-3 w-1/2 justify-center item-center text-center">
+            <Link to={"/register"}className="rounded-xl border-2 border-black bg-red-500 text-white px-4 py-3 w-1/2 justify-center item-center text-center">
              Register
             </Link>
             <button className="rounded-xl border-2 border-black bg-sky-500 text-white px-4 py-3 w-1/2 btn btn-primary">

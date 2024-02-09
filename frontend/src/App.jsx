@@ -1,5 +1,6 @@
 import { BrowserRouter, Route } from "react-router-dom"
 import { useEffect, useState } from "react"
+import Masonry from "react-responsive-masonry";
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Loading from "./components/Loading";
@@ -11,6 +12,7 @@ import Utama from "./pages/Utama.jsx";
 import LoginCoba from "./pages/logincoba.jsx";
 import RegisCoba from "./pages/regiscoba.jsx";
 import UtamaCoba from "./pages/utamaCoba.jsx";
+import CobaMasonry from "./pages/cobaMasonry.jsx";
 
 export default function App () {
   const [user,setUser] = useState();
@@ -41,6 +43,7 @@ export default function App () {
         <Route path="/logincoba" element={<LoginCoba />} />
         <Route path="/regiscoba" element={<RegisCoba />} />
         <Route path="/utamacoba" element={<UtamaCoba />} />
+        <Route path="/cobamasonry" element={<CobaMasonry />} />
       </Middleware>
 
       <Middleware next={user} >
